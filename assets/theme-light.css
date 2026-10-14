@@ -1,0 +1,141 @@
+/* =========================================================
+   PapaBin — Light theme
+   Активируется классом .light на <html> (см. assets/main.js).
+   Тёмная тема остаётся по умолчанию и не меняется.
+   ========================================================= */
+
+html.light {
+  --lt-bg: #f6f7f3;          /* фон страницы (вместо #0a0a0a) */
+  --lt-bg-rgb: 246 247 243;
+  --lt-card: #ffffff;        /* карточки (вместо #111111) */
+  --lt-section: #edf0e8;     /* «чёрная» секция Platforms */
+  --lt-fg: #0a0a0a;          /* основной текст (вместо белого) */
+  --lt-fg-rgb: 10 10 10;
+  --lt-border: rgba(10, 10, 10, .09);
+  --lt-money-text: #46732f;  /* зелёный для текста: контраст 5.2:1 на фоне */
+  --lt-shadow: 0 1px 2px rgba(10, 10, 10, .04), 0 8px 24px -12px rgba(10, 10, 10, .12);
+  color-scheme: light;
+
+  /* блог-карточки (HomeView.css) */
+  --blog-bg: var(--lt-bg);
+  --blog-card: var(--lt-card);
+  --blog-border: var(--lt-border);
+  --blog-border-hover: rgba(70, 115, 47, .45);
+  --blog-text: var(--lt-fg);
+  --blog-text-muted: rgba(10, 10, 10, .64);
+  --blog-text-faint: rgba(10, 10, 10, .48);
+  --blog-accent: var(--lt-money-text);
+  --blog-accent-soft: #5e8f43;
+}
+
+/* ---------- База (app.css) ---------- */
+html.light body { background: var(--lt-bg); color: var(--lt-fg); }
+html.light ::-webkit-scrollbar-track { background: var(--lt-bg); }
+html.light .nav-glass { background: rgba(246, 247, 243, .78); }
+html.light .grid-bg {
+  background-image:
+    linear-gradient(rgba(70, 115, 47, .06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(70, 115, 47, .06) 1px, transparent 1px);
+}
+html.light .video-gradient { background: linear-gradient(180deg, rgba(246, 247, 243, .4), rgba(246, 247, 243, .9)); }
+html.light .glow-text { text-shadow: 0 0 32px rgba(133, 187, 101, .25); }
+html.light .glitch:before { color: #85bb65; }
+html.light .feature-card { border-color: var(--lt-border); }
+html.light .feature-card:hover { border-color: rgba(70, 115, 47, .4); box-shadow: 0 20px 60px rgba(70, 115, 47, .12); }
+html.light .noise:before { opacity: .6; }
+
+/* прелоадер */
+html.light .preloader { background: var(--lt-bg); }
+html.light .preloader .svg-elem-1, html.light .preloader .svg-elem-2, html.light .preloader .svg-elem-4,
+html.light .preloader .svg-elem-5, html.light .preloader .svg-elem-6, html.light .preloader .svg-elem-7,
+html.light .preloader .svg-elem-8, html.light .preloader .svg-elem-9, html.light .preloader .svg-elem-10,
+html.light .preloader .svg-elem-11 { animation-name: lt-fill-dark; }
+html.light .preloader .svg-elem-3, html.light .preloader .svg-elem-12, html.light .preloader .svg-elem-13,
+html.light .preloader .svg-elem-14, html.light .preloader .svg-elem-15, html.light .preloader .svg-elem-16,
+html.light .preloader .svg-elem-17 { animation-name: lt-fill-light; }
+@keyframes lt-fill-dark { 0% { fill: transparent } to { fill: #0a0a0a } }
+@keyframes lt-fill-light { 0% { fill: transparent } to { fill: #f8f8f8 } }
+
+/* логотип двухцветный (#F8F8F8 / #040403) — инвертируем */
+html.light img[src$="logo.svg"] { filter: invert(1); }
+
+/* ---------- Tailwind-утилиты ---------- */
+/* Кнопки «bg-dark text-money» стоят на зелёном фоне — их не трогаем */
+html.light .bg-dark:not(.text-money) { background-color: var(--lt-bg); }
+html.light .bg-dark\/80 { background-color: rgb(var(--lt-bg-rgb) / .8); }
+html.light .bg-darkCard { background-color: var(--lt-card); box-shadow: var(--lt-shadow); }
+html.light .hover\:bg-darkCard:hover:not(.text-money) { background-color: var(--lt-card); }
+html.light .bg-black { background-color: var(--lt-section); }
+
+html.light .text-white { color: var(--lt-fg); }
+html.light .text-white\/20 { color: rgb(var(--lt-fg-rgb) / .42); }
+html.light .text-white\/30 { color: rgb(var(--lt-fg-rgb) / .5); }
+html.light .text-white\/40 { color: rgb(var(--lt-fg-rgb) / .56); }
+html.light .text-white\/50 { color: rgb(var(--lt-fg-rgb) / .64); }
+html.light .text-white\/60 { color: rgb(var(--lt-fg-rgb) / .7); }
+html.light .text-white\/70 { color: rgb(var(--lt-fg-rgb) / .76); }
+html.light .text-white\/80 { color: rgb(var(--lt-fg-rgb) / .84); }
+
+html.light .text-money:not(.bg-dark),
+html.light .hover\:text-money:hover { color: var(--lt-money-text); }
+
+html.light .border-white\/5 { border-color: var(--lt-border); }
+html.light .border-money\/10 { border-color: rgba(70, 115, 47, .18); }
+html.light .border-money\/20 { border-color: rgba(70, 115, 47, .28); }
+html.light .border-money\/30 { border-color: rgba(70, 115, 47, .36); }
+html.light .hover\:border-money\/20:hover { border-color: rgba(70, 115, 47, .3); }
+html.light .hover\:border-money\/30:hover { border-color: rgba(70, 115, 47, .4); }
+html.light .bg-money\/10 { background-color: rgba(133, 187, 101, .16); }
+
+/* градиенты: порядок from → via → to важен */
+html.light .from-dark\/60 {
+  --tw-gradient-from: rgb(var(--lt-bg-rgb) / .6) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(var(--lt-bg-rgb) / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+html.light .via-dark {
+  --tw-gradient-to: rgb(var(--lt-bg-rgb) / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--lt-bg) var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+html.light .via-dark\/80 {
+  --tw-gradient-to: rgb(var(--lt-bg-rgb) / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), rgb(var(--lt-bg-rgb) / .8) var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+html.light .via-white\/5 {
+  --tw-gradient-to: rgb(var(--lt-fg-rgb) / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), rgb(var(--lt-fg-rgb) / .1) var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+html.light .to-dark { --tw-gradient-to: var(--lt-bg) var(--tw-gradient-to-position); }
+
+/* видео на фоне hero — чуть спокойнее на светлом */
+html.light #hero video { opacity: .18; }
+
+/* блог (HomeView.css) — захардкоженные тёмные цвета */
+html.light .blog-card { box-shadow: var(--lt-shadow); }
+html.light .blog-card:hover { box-shadow: 0 20px 60px rgba(70, 115, 47, .12); }
+html.light .blog-card-cover,
+html.light .post-inline-image { background: #e9ece4; }
+html.light .blog-card-sep, html.light .post-bc-sep, html.light .post-meta-sep { color: rgba(10, 10, 10, .25); }
+html.light .home-blog-view-all:hover { color: #fff; }
+
+/* ---------- Переключатель темы ---------- */
+.theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .1);
+  color: rgba(255, 255, 255, .7); background: transparent; cursor: pointer;
+  transition: color .3s ease, border-color .3s ease, background-color .3s ease;
+}
+.theme-toggle:hover { color: #85bb65; border-color: rgba(133, 187, 101, .4); }
+.theme-toggle:focus-visible { outline: 2px solid #85bb65; outline-offset: 2px; }
+.theme-toggle svg { width: 18px; height: 18px; }
+.theme-toggle .icon-sun { display: none; }
+html.light .theme-toggle { border-color: var(--lt-border); color: rgb(var(--lt-fg-rgb) / .7); }
+html.light .theme-toggle:hover { color: var(--lt-money-text); border-color: rgba(70, 115, 47, .4); }
+html.light .theme-toggle .icon-sun { display: block; }
+html.light .theme-toggle .icon-moon { display: none; }
+
+/* плавная смена темы (класс ставится только на время переключения) */
+html.theme-anim *, html.theme-anim *:before, html.theme-anim *:after {
+  transition: background-color .35s ease, color .35s ease, border-color .35s ease !important;
+}
